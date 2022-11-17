@@ -1,0 +1,105 @@
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .logo img {
+    width: 60px;
+  }
+  livelike-widget-root,
+.responsive-tabs,
+livelike-message-item,
+livelike-chat-composer,
+.livelike-load-more-button {
+    width: 100%;
+    align-self: center;
+    margin-bottom: 20px;
+  }
+  .responsive-text {
+    font-size: 16px;
+  }
+}
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .logo img {
+    width: 70px;
+  }
+  livelike-widget-root,
+.responsive-tabs,
+livelike-message-item,
+livelike-chat-composer,
+.livelike-load-more-button {
+    width: 90%;
+    margin: auto;
+    margin-bottom: 10px;
+  }
+  .responsive-text {
+    font-size: 18px;
+  }
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .logo img {
+    width: 80px;
+  }
+  livelike-widget-root,
+.responsive-tabs,
+livelike-message-item,
+livelike-chat-composer,
+.livelike-load-more-button {
+    width: 80%;
+    margin: auto;
+  }
+  .responsive-text {
+    font-size: 20px;
+  }
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .logo img {
+    width: 90px;
+  }
+  livelike-widget-root,
+.responsive-tabs,
+livelike-message-item,
+livelike-chat-composer,
+.livelike-load-more-button {
+    width: 65%;
+    margin: auto;
+  }
+  .responsive-text {
+    font-size: 22px;
+  }
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .logo img {
+    width: 100px;
+  }
+  livelike-widget-root,
+.responsive-tabs,
+livelike-message-item,
+livelike-chat-composer,
+.livelike-load-more-button {
+    width: 55%;
+    margin: auto;
+  }
+  .responsive-text {
+    font-size: 24px;
+  }
+}
+@media only screen and (min-width: 1400px) {
+  .logo img {
+    width: 100px;
+  }
+  livelike-widget-root,
+.responsive-tabs,
+livelike-message-item,
+livelike-chat-composer,
+.livelike-load-more-button {
+    width: 45%;
+    margin: auto;
+  }
+  .responsive-text {
+    font-size: 26px;
+  }
+}
+
+/*# sourceMappingURL=media_query.css.map */

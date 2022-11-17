@@ -1,0 +1,289 @@
+livelike-widget-root {
+  background-color: #1a2434 !important;
+  border-radius: 0;
+}
+
+livelike-widget-header,
+livelike-widget-body {
+  background-color: #1a2434 !important;
+  background: #1a2434;
+}
+
+livelike-title {
+  color: #ffffff;
+  background-color: #1a2434;
+  padding: 2px 14px;
+  font-weight: 500;
+  font-size: 24px;
+  font-family: "PSGFont";
+  line-height: 25px;
+}
+
+livelike-image {
+  height: 60px;
+  width: 60px;
+}
+
+livelike-image img {
+  height: 58px;
+  width: 58px;
+  z-index: 0;
+  transform: translateX(-1px);
+}
+
+livelike-option[selected] {
+  background: #252f3e !important;
+}
+
+livelike-option {
+  border-radius: 5px !important;
+  height: 60px;
+  margin: 10px;
+}
+
+livelike-widget-root {
+  margin-bottom: 10px;
+}
+
+livelike-description {
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 16px;
+  /* margin-top:12px */
+}
+
+livelike-percentage {
+  color: #ffffff;
+}
+
+livelike-progress {
+  bottom: 14px;
+  left: 14px;
+  height: 4px;
+  border-radius: unset;
+  top: unset !important;
+  margin-top: unset !important;
+  background: #ffffff;
+}
+
+livelike-progress[image] {
+  height: 4px !important;
+}
+
+livelike-widget-root livelike-widget-body livelike-select livelike-option {
+  background: #252f3e !important;
+  background-color: #252f3e !important;
+}
+
+livelike-select {
+  background-color: #1a2434 !important;
+}
+
+livelike-option .livelike-voting-image-container {
+  background-color: #252f3e !important;
+  min-height: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+livelike-description {
+  font-size: 12px;
+  font-family: "PSGFont";
+  padding: 15px 0 0 13px;
+}
+
+livelike-option .livelike-voting-image-container .image-description-wrapper {
+  font-size: 15px;
+  display: flex;
+  height: 100%;
+  width: calc(80% - 14px);
+  position: relative;
+  background-color: #252f3e !important;
+}
+
+livelike-option
+  .livelike-voting-image-container
+  .image-description-wrapper
+  livelike-description {
+  padding: 15px 0 0 13px;
+  background-color: #252f3e !important;
+}
+
+livelike-option[image] {
+  flex-direction: row-reverse;
+  line-height: 15px;
+  font-size: 12px;
+  padding: 0px;
+  background-color: #252f3e !important;
+}
+
+livelike-option:not([image]) {
+  padding: 0 !important;
+  background-color: #252f3e !important;
+}
+
+livelike-option:not([image]) div:first-child {
+  height: 100% !important;
+  background-color: #252f3e !important;
+}
+
+livelike-option:not([image]) livelike-percentage {
+  align-self: center;
+}
+
+livelike-option:not([image]) livelike-description {
+  padding: 10px 0 0 14px !important;
+  background-color: #252f3e !important;
+}
+
+livelike-percentage {
+  font-family: "PSGFont";
+  font-size: 22px;
+  padding: 0 14px 0 0 !important;
+  line-height: 20px;
+}
+
+/* Correct / Incorrect / Selected*/
+livelike-description[selected],
+livelike-description[selected][incorrect],
+livelike-percentage[selected],
+livelike-percentage[selected][incorrect] {
+  color: #ffffff;
+}
+
+livelike-percentage[correct] {
+  color: #00fa64;
+}
+
+livelike-option[selected] {
+  border-color: #ffffff;
+  background-color: #252f3e !important;
+}
+
+livelike-option[selected][correct] {
+  border-color: #00fa64;
+  background-color: #252f3e !important;
+}
+
+livelike-description[correct] {
+  color: #00fa64;
+  background-color: #252f3e !important;
+}
+
+livelike-option[selected][incorrect] {
+  border-color: #cf2e25;
+  background-color: #252f3e !important;
+}
+
+livelike-progress[selected],
+livelike-progress[selected][incorrect] {
+  background: #ffffff;
+}
+
+livelike-progress[correct] {
+  background: #00fa64;
+}
+
+livelike-option[correct] {
+  border-color: #00fa64;
+  background-color: #252f3e;
+}
+
+/*  Vote Button Footer */
+
+livelike-footer {
+  background-color: #183f6c !important;
+  margin: 0 0 6px 14px;
+}
+
+livelike-alert livelike-footer {
+  background-color: #3f454c !important;
+  margin: 0 0 6px 14px;
+}
+
+.widget-link:after {
+  top: 8px;
+}
+
+.vote-button {
+  background: #cf2e25 !important;
+  border: unset !important;
+  border-radius: 0px !important;
+  color: #ffffff !important;
+  margin: 0 !important;
+  padding: 3px 30px !important;
+  font-family: "PSGFont";
+  font-style: normal;
+  font-size: 14px;
+}
+
+.vote-button[disabled] {
+  background: #7e7e7e !important;
+  border-radius: 0px !important;
+  border: unset !important;
+  color: #ffffff !important;
+}
+
+.voted-text {
+  font-family: "PSGFont" !important;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 14px;
+  color: #ffffff;
+  padding-left: 10px;
+}
+
+.predict-button {
+  background: #cf2e25 !important;
+  border: unset !important;
+  border-radius: 0px !important;
+  color: #ffffff !important;
+  margin: 0 !important;
+  padding: 3px 30px !important;
+  font-family: "PSGFont";
+  font-style: normal;
+  font-size: 14px;
+}
+
+.predict-button[disabled] {
+  background: #7e7e7e;
+  border: unset !important;
+  color: #ffffff !important;
+}
+
+/* Progress Spacing */
+
+livelike-option:not([image]) div:first-child {
+  width: 80% !important;
+}
+
+livelike-percentage {
+  transform: translateX(20%);
+}
+
+livelike-option:not([image]) div:first-child livelike-percentage {
+  left: 25%;
+}
+
+.widget-caption {
+  color: #ffffff;
+}
+
+.leaderboard-container {
+  padding: 12px;
+  height: calc(100% - 168px);
+  overflow-y: auto;
+}
+
+.widget-link {
+  background-color: unset !important;
+  padding: unset;
+  color: white;
+}
+
+.widget-link:after {
+  top: 7px;
+}

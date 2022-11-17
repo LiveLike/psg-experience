@@ -1,0 +1,125 @@
+livelike-description {
+  font-size: 20px;
+}
+
+.nav-link {
+  font-size: 14px;
+}
+
+livelike-widget-body {
+  background-color: #1a2434 !important;
+}
+
+livelike-footer {
+  background-color: transparent !important;
+  background-color: #183f6c;
+}
+
+livelike-percentatge {
+  font-family: "PSGFont" !important;
+  padding-right: 3px !important;
+}
+
+td,
+th {
+  padding-top: 17px;
+  padding-bottom: 17px;
+  font-size: 16px;
+}
+
+livelike-progress {
+  background-color: white !important;
+  z-index: 100 !important;
+}
+
+#createProfileButton {
+  color: white !important;
+  background-color: #cf2e25;
+  width: 144px;
+  height: 41px;
+  border-radius: 0px;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: normal;
+  line-height: 14px;
+}
+
+#createProfileButton:disabled,
+#createProfileButton[disabled] {
+  color: white !important;
+  background-color: #c8c8c8;
+  text-transform: uppercase;
+  width: 144px;
+  height: 41px;
+  border-radius: 0px;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 14px;
+}
+
+.thead-element {
+  font-family: "PSGFont";
+  font-style: normal;
+  font-weight: 100 !important;
+  color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.score-label {
+  font-family: "PSGFont";
+  font-style: normal;
+  font-weight: 100 !important;
+}
+
+livelike-option livelike-progress:not([changed]) {
+  visibility: hidden !important;
+}
+
+livelike-option livelike-percentage:not([changed]) {
+  visibility: hidden !important;
+}
+
+livelike-widgets {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.widgets-tab {
+  padding-bottom: 100px;
+}
+
+/* .text-ask-button {
+  font-family: "PSGFont" !important;
+  color: white !important;
+  background-color: #CF2E25 !important;
+  border-radius: 0px !important;
+  line-height: 12px !important;
+  height: 14px;
+} */
+
+.text-ask-button {
+  background: #cf2e25 !important;
+  border: unset !important;
+  border-radius: 0px !important;
+  color: #ffffff !important;
+  margin: 0 !important;
+  padding: 3px 20px !important;
+  font-style: normal;
+}
+
+.text-ask-button [disabled] {
+  background: #7e7e7e !important;
+  border-radius: 0px !important;
+  border: unset !important;
+  color: #ffffff !important;
+}
+
+.text-ask-button-label{
+  font-weight: 100 !important;
+  font-family: "PSGFont";
+  font-size: 14px;
+}
+
+.quiz-confirmation-message {
+  font-size: 16px !important;
+  font-weight: 100 !important;
+}

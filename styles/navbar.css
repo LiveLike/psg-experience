@@ -1,0 +1,129 @@
+#navbar {
+  position: sticky;
+  z-index: 1030;
+  margin-right: 0;
+  margin-left: 0;
+  top: 20vh;
+  height: 6vh;
+  background-color: #1E2B4A;
+}
+
+.nav-item {
+  height: 100%;
+}
+
+.nav-item {
+  border-left: 1px #111720 solid;
+}
+
+.nav-tabs {
+  border: unset !important;
+  height: 42px !important;
+  font-family: "PSGFont";
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 8px;
+  background-color: #183561 !important;
+  color: white;
+  font-size: 12px;
+  font-family: "PSGFont";
+  font-style: normal;
+}
+
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+  color: #FFF !important;
+  border-color: #183561 #183561 #183561 !important;
+  background-color: #183561 !important;
+}
+
+.nav-tabs .nav-link {
+  border-top-left-radius: 0rem !important;
+  border-top-right-radius: 0rem !important
+}
+
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active span {
+  border-bottom: 2px solid #CF2E25;
+}
+
+.nav-pills .nav-link {
+  background-color: #171725;
+  border-radius: 0;
+  font-family: "PSGFont";
+  font-style: normal;
+  font-size: 16px;
+  color: #5a5a64;
+  line-height: 1.6;
+}
+
+.nav-pills .nav-link.active {
+  color: #CF2E25;
+  background-color: #183561;
+  border-bottom: 2px solid #f26a16;
+  font-family: "PSGFont";
+  font-style: normal;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.nav-pills .nav-link.active a {
+  background-color: #183561;
+}
+
+.nav li a {
+  color: rgb(110, 110, 110);
+  background-color: #183561;
+}
+
+.nav li a:hover {
+  color: rgb(110, 110, 110);
+  background-color: #183561;
+}
+
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active img {
+  visibility: hidden;
+}
+
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link img {
+  visibility: visible;
+}
+
+/* Scrolling changes*/
+html {
+  height: 100vh;
+}
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.container {
+  height: 100%;
+}
+
+.static-content-top {
+  position: relative;
+}
+
+.tab-content {
+  padding-top: 0;
+  height: 100%;
+  /* height: calc(100% - 250px); */
+  /* min-height: calc(100% - 250px); */
+}
+/*  100% - static-content-top height */
+
+.widgets-tab {
+  height: calc(100% - 168px);
+  overflow-y: auto;
+}
