@@ -113,7 +113,7 @@ livelike-widgets {
   color: #ffffff !important;
 }
 
-.text-ask-button-label{
+.text-ask-button-label {
   font-weight: 100 !important;
   font-family: "PSGFont";
   font-size: 14px;
@@ -122,4 +122,30 @@ livelike-widgets {
 .quiz-confirmation-message {
   font-size: 16px !important;
   font-weight: 100 !important;
+}
+
+livelike-image-number-prediction livelike-option[correct],
+livelike-image-number-prediction-follow-up livelike-option[correct],
+livelike-image-number-prediction livelike-option[incorrect],
+livelike-image-number-prediction-follow-up livelike-option[incorrect],
+livelike-image-number-prediction livelike-option[selected][correct],
+livelike-image-number-prediction-follow-up livelike-option[selected][correct],
+livelike-image-number-prediction livelike-option[selected][incorrect],
+livelike-image-number-prediction-follow-up livelike-option[selected][incorrect],
+livelike-text-prediction livelike-option[correct],
+livelike-text-prediction-follow-up livelike-option[correct],
+livelike-text-prediction livelike-option[incorrect],
+livelike-text-prediction-follow-up livelike-option[incorrect],
+livelike-text-prediction livelike-option[selected][correct],
+livelike-text-prediction-follow-up livelike-option[selected][correct],
+livelike-text-prediction livelike-option[selected][incorrect],
+livelike-text-prediction-follow-up livelike-option[selected][incorrect],
+livelike-image-prediction livelike-option[correct],
+livelike-image-prediction-follow-up livelike-option[correct] livelike-image-prediction livelike-option[incorrect] livelike-image-prediction-follow-up livelike-option[incorrect],
+livelike-image-prediction livelike-option[selected][correct],
+livelike-image-prediction-follow-up livelike-option[selected][correct],
+livelike-image-prediction livelike-option[selected][incorrect],
+livelike-image-prediction-follow-up livelike-option[selected][incorrect] {
+  border-color: #252f3e !important;
+  background-color: #252f3e !important;
 }

@@ -43,7 +43,7 @@ h1 {
 }
 
 livelike-image-number-prediction-follow-up {
-  margin: 10px;
+  /* margin: 10px; */
   font-family: "PSGFont" !important;
   color: #ffffff;
 }
@@ -353,4 +353,3 @@ livelike-image-number-prediction .livelike-voting-number-input {
   border: 1px solid #252F3E !important;
   color: #FFFFFF !important;
 }
-
