@@ -59,12 +59,12 @@ const showAllTabs = () => {
 
 };
 
-const updateUserProfile = ({ nickname }) => {
+const updateUserProfile = ({ nickname, custom_data }) => {
     LiveLike.updateUserProfile({
         accessToken: LiveLike.userProfile.access_token,
         options: {
             nickname: nickname,
-            //custom_data: JSON.stringify({}),
+            custom_data: JSON.stringify(custom_data),
         },
     })
         .then((res) => {
@@ -91,9 +91,9 @@ const handleCreateUserProfile = (e) => {
     if (profileIsValid()) {
         updateUserProfile({
             nickname: document.querySelector('#form-user-nickname').value,
-            custom_data: JSON.stringify({
+            custom_data: {
                 email: document.querySelector('#form-user-email').value
-            })
+            }
         });
     }
 };
