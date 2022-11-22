@@ -336,8 +336,8 @@ livelike-image-number-prediction {
 }
 
 livelike-image-number-prediction livelike-option[image] {
-  background-color: #1A2434 !important;
-  border: 1px solid #1A2434;
+  background-color: #252F3E !important;
+  border: 1px solid #252F3E !important;
 }
 
 livelike-image-number-prediction livelike-option[image] .livelike-voting-image-container {
@@ -349,7 +349,7 @@ livelike-image-number-prediction livelike-option[image] .livelike-voting-input-c
 }
 
 livelike-image-number-prediction .livelike-voting-number-input {
-  background-color: #252F3E !important;
-  border: 1px solid #252F3E !important;
+  background-color: #1A2434 !important;
+  border: 1px solid #1A2434 !important;
   color: #FFFFFF !important;
 }
