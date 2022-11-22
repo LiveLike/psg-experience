@@ -39,6 +39,9 @@ const addFooterToFollowUpPredictions = () => {
       continue;
     }
 
+    currentWidgetElement = livelikeWidgetsElement.querySelector(`[widgetid="${currentWidget.id}"]`);
+    currentWidgetElement.querySelector(".predict-button").innerHTML = "Valider";
+
     const followUpWidget = widgets.find(widget => {
       if (widget.kind == "image-number-prediction-follow-up") {
         return currentWidget.id == widget.image_number_prediction_id;
@@ -72,6 +75,7 @@ const init = (clientId, programId, leaderboardId) => {
 
     LiveLike.applyLocalization({
       en: {
+        "widget.quiz.voteButton.label": "Valider",
         "widget.quiz.voteButton.label": "Valider",
         "widget.quiz.votedText": "Fait!",
         'widget.textAsk.placeholder': 'Écrivez ici...',
