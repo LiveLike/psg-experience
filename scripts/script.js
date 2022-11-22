@@ -27,97 +27,30 @@ const handleWidgetsScrolling = () => {
   widgetsContainer.addEventListener('widgetattached', scrollUp);
 }
 
-const calculateScore = ({ currentWidget, followUpWidget }) => {
-
-  // const returnReward = (isCorrect) => {
-  //   if (isCorrect) {
-  //     var earnableReward = currentWidget.earnable_rewards.find(x => x.reward_action_key == "prediction-correct");
-  //     if (earnableReward) {
-  //       console.log(earnableReward);
-  //       return earnableReward.reward_item_amount;
-  //     }
-  //   } else {
-  //     var earnableReward = currentWidget.earnable_rewards.find(x => x.reward_action_key == "prediction-made");
-  //     if (earnableReward) {
-  //       return earnableReward.reward_item_amount;
-  //     }
-  //   }
-  // }
-
-  if (currentWidget.kind == "image-number-prediction") {
-
-    let allOptionsAnswersAreCorrect = true;
-
-    for (let index = 0; index < followUpWidget.options.length; index++) {
-      const option = followUpWidget.options[index];
-      console.log(option);
-      if (option.correct_number != option.number) {
-        allOptionsAnswersAreCorrect = false;
-        break;
-      }
-    }
-
-    if (allOptionsAnswersAreCorrect) {
-      var earnableReward = currentWidget.earnable_rewards.find(x => x.reward_action_key == "prediction-correct");
-      if (earnableReward) {
-        console.log(earnableReward);
-        return earnableReward.reward_item_amount;
-      }
-    } else {
-      var earnableReward = currentWidget.earnable_rewards.find(x => x.reward_action_key == "prediction-made");
-      if (earnableReward) {
-        return earnableReward.reward_item_amount;
-      }
-    }
-  } else if (currentWidget.kind == "text-prediction") {
-
-  } else if (currentWidget.kind == "image-prediction") {
-
-  }
-
-  return 0;
+const getScoreAsync = async (widgetId) => {
+  const response = await LiveLike.getRewardTransactions({ widgetIds: [widgetId] });
+  console.log(response.results);
+  return {
+    rewardItemAmount: response.results.map(x => x.reward_item_amount).reduce((accumulator, currentValue) => accumulator + currentValue, 0),
+    rewardItemName: response.results.length ? response.results[0].reward_item_name : null
+  };
 };
 
-const addFooterToFollowUpPredictions = () => {
-  const livelikeWidgetsElement = document.querySelector("livelike-widgets");
-  const livelikeWidgetsCollection = livelikeWidgetsElement.children;
-  const widgets = Array.from(livelikeWidgetsCollection).map(x => x.__widgetPayload);
-
-  for (let index = 0; index < widgets.length; index++) {
-    const currentWidget = widgets[index];
-
-    if (!(currentWidget.kind == "image-number-prediction" || currentWidget.kind == "text-prediction" || currentWidget.kind == "image-prediction")) {
-      continue;
+const addFooterToPredictionAsync = async (widget, element) => {
+  console.log(widget, element);
+  const body = element.querySelector('livelike-widget-body');
+  if (body) {
+    let widgetId = ""
+    if (widget.kind == "text-prediction-follow-up") {
+      widgetId = widget.text_prediction_id;
+    } else if (widget.kind == "image-number-prediction-follow-up") {
+      widgetId = widget.image_number_prediction_id;
+    } else if (widget.kind == "image-prediction-follow-up") {
+      widgetId = widget.image_prediction_id;
     }
 
-    currentWidgetElement = livelikeWidgetsElement.querySelector(`[widgetid="${currentWidget.id}"]`);
-
-    const followUpWidget = widgets.find(widget => {
-      if (widget.kind == "image-number-prediction-follow-up") {
-        return currentWidget.id == widget.image_number_prediction_id;
-      } else if (widget.kind == "text-prediction-follow-up") {
-        return currentWidget.id == widget.text_prediction_id;
-      } else if (widget.kind == "image-prediction-follow-up") {
-        return currentWidget.id == widget.image_prediction_id;
-      }
-    });
-
-    if (!followUpWidget) {
-      continue;
-    }
-
-    const followUpWidgetElement = livelikeWidgetsElement.querySelector(`[widgetid="${followUpWidget.id}"]`);
-    const footerElement = followUpWidgetElement.querySelector("livelike-footer")
-
-    if (footerElement) {
-      continue;
-    }
-
-    const body = followUpWidgetElement.querySelector('livelike-widget-body');
-    if (body) {
-      let score = calculateScore({ currentWidget, followUpWidget });
-      body.insertAdjacentHTML('afterend', `<livelike-footer class="prediction-follow-up-footer-message">${score} ${currentWidget.earnable_rewards[0].reward_item_name}</livelike-footer>`);
-    }
+    const score = await getScoreAsync(widgetId);
+    body.insertAdjacentHTML('afterend', `<livelike-footer class="prediction-follow-up-footer-message">${score.rewardItemAmount} ${score.rewardItemName}</livelike-footer>`);
   }
 };
 
@@ -162,10 +95,19 @@ const init = (clientId, programId, leaderboardId) => {
 
     widget.addEventListener('answer', handleResultAnimation);
     widgetsContainer.addEventListener('widgetattached', e => {
-      e.detail.element.updateComplete.then(addFooterToFollowUpPredictions);
+      const { widget } = e.detail
+      if (!(widget.kind == "image-number-prediction-follow-up"
+        || widget.kind == "text-prediction-follow-up"
+        || widget.kind == "image-prediction-follow-up")) {
+        return;
+      }
+
+      e.detail.element.updateComplete.then(async (event) => {
+        await addFooterToPredictionAsync(e.detail.widget, e.detail.element);
+      });
     });
   });
-};
+}
 
 const handleResultAnimation = e => {
   const { result, element, widget, answer } = e.detail;
