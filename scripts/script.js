@@ -61,7 +61,7 @@ const addFooterToFollowUpPredictions = () => {
     }
 
     const body = followUpWidgetElement.querySelector('livelike-widget-body');
-    body.insertAdjacentHTML('afterend', `<livelike-footer>You won ${currentWidget.earnable_rewards[0].reward_item_amount} ${currentWidget.earnable_rewards[0].reward_item_name}</livelike-footer>`);
+    body.insertAdjacentHTML('afterend', `<livelike-footer class="prediction-follow-up-footer-message">You won ${currentWidget.earnable_rewards[0].reward_item_amount} ${currentWidget.earnable_rewards[0].reward_item_name}</livelike-footer>`);
   }
 };
 

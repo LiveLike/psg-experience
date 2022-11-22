@@ -149,3 +149,9 @@ livelike-image-prediction-follow-up livelike-option[selected][incorrect] {
   border-color: #252f3e !important;
   background-color: #252f3e !important;
 }
+
+.prediction-follow-up-footer-message {
+  font-family: 'PSGFont' !important;
+  font-weight: 100 !important;
+  color: #00fa64 !important;
+}
