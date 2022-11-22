@@ -27,6 +27,57 @@ const handleWidgetsScrolling = () => {
   widgetsContainer.addEventListener('widgetattached', scrollUp);
 }
 
+const calculateScore = ({ currentWidget, followUpWidget }) => {
+
+  // const returnReward = (isCorrect) => {
+  //   if (isCorrect) {
+  //     var earnableReward = currentWidget.earnable_rewards.find(x => x.reward_action_key == "prediction-correct");
+  //     if (earnableReward) {
+  //       console.log(earnableReward);
+  //       return earnableReward.reward_item_amount;
+  //     }
+  //   } else {
+  //     var earnableReward = currentWidget.earnable_rewards.find(x => x.reward_action_key == "prediction-made");
+  //     if (earnableReward) {
+  //       return earnableReward.reward_item_amount;
+  //     }
+  //   }
+  // }
+
+  if (currentWidget.kind == "image-number-prediction") {
+
+    let allOptionsAnswersAreCorrect = true;
+
+    for (let index = 0; index < followUpWidget.options.length; index++) {
+      const option = followUpWidget.options[index];
+      console.log(option);
+      if (option.correct_number != option.number) {
+        allOptionsAnswersAreCorrect = false;
+        break;
+      }
+    }
+
+    if (allOptionsAnswersAreCorrect) {
+      var earnableReward = currentWidget.earnable_rewards.find(x => x.reward_action_key == "prediction-correct");
+      if (earnableReward) {
+        console.log(earnableReward);
+        return earnableReward.reward_item_amount;
+      }
+    } else {
+      var earnableReward = currentWidget.earnable_rewards.find(x => x.reward_action_key == "prediction-made");
+      if (earnableReward) {
+        return earnableReward.reward_item_amount;
+      }
+    }
+  } else if (currentWidget.kind == "text-prediction") {
+
+  } else if (currentWidget.kind == "image-prediction") {
+
+  }
+
+  return 0;
+};
+
 const addFooterToFollowUpPredictions = () => {
   const livelikeWidgetsElement = document.querySelector("livelike-widgets");
   const livelikeWidgetsCollection = livelikeWidgetsElement.children;
@@ -40,7 +91,6 @@ const addFooterToFollowUpPredictions = () => {
     }
 
     currentWidgetElement = livelikeWidgetsElement.querySelector(`[widgetid="${currentWidget.id}"]`);
-    //currentWidgetElement.querySelector(".predict-button").innerHTML = "Valider";
 
     const followUpWidget = widgets.find(widget => {
       if (widget.kind == "image-number-prediction-follow-up") {
@@ -64,7 +114,10 @@ const addFooterToFollowUpPredictions = () => {
     }
 
     const body = followUpWidgetElement.querySelector('livelike-widget-body');
-    body.insertAdjacentHTML('afterend', `<livelike-footer class="prediction-follow-up-footer-message">${currentWidget.earnable_rewards[0].reward_item_amount} ${currentWidget.earnable_rewards[0].reward_item_name}</livelike-footer>`);
+    if (body) {
+      let score = calculateScore({ currentWidget, followUpWidget });
+      body.insertAdjacentHTML('afterend', `<livelike-footer class="prediction-follow-up-footer-message">${score} ${currentWidget.earnable_rewards[0].reward_item_name}</livelike-footer>`);
+    }
   }
 };
 
