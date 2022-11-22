@@ -50,7 +50,7 @@ const addFooterToPredictionAsync = async (widget, element) => {
     }
 
     const score = await getScoreAsync(widgetId);
-    body.insertAdjacentHTML('afterend', `<livelike-footer class="prediction-follow-up-footer-message">${score.rewardItemAmount} ${score.rewardItemName}</livelike-footer>`);
+    body.insertAdjacentHTML('afterend', `<livelike-footer class="prediction-follow-up-footer-message">${score.rewardItemAmount} ${score.rewardItemAmount ? score.rewardItemName : ""}</livelike-footer>`);
   }
 };
 
