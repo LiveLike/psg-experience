@@ -70,9 +70,13 @@
         <div style="display: flex; flex-direction: column;">
           <div class="profile-container">
             <form autocomplete="off">
-              <label class="form-label" for="form-user-nickName">Nom d’équipe<b class="red-text">*</b></label>
+              <label class="form-label" for="form-user-nickname">Name<b class="red-text">*</b></label>
               <input onchange="performUserFormValidation()" onkeydown="performUserFormValidation()" type="text"
-                id="form-user-nickName" class="profile-input form-control" />
+                id="form-user-nickname" class="profile-input form-control" />
+              <br />
+              <label class="form-label" for="form-user-email">Email<b class="red-text">*</b></label>
+              <input onchange="performUserFormValidation()" onkeydown="performUserFormValidation()" type="text"
+                id="form-user-email" class="profile-input form-control" />
             </form>
             <br />
             <button class="btn btn-default" id="createProfileButton" onclick="handleCreateUserProfile()">Créer
@@ -98,8 +102,8 @@
       const clientId = "QcGUcxr97Bf05j6Dz1v8anj7FPWZ58GWlIatzJkz";
       const programId = getProgramId();
       //const programId = "";
-      
-      
+
+
       ; (async () => {
 
         const leaderboardId = await getLeaderboardIdAsync({ programId });
