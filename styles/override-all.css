@@ -78,6 +78,19 @@ livelike-option livelike-percentage:not([changed]) {
   visibility: hidden !important;
 }
 
+livelike-image-prediction livelike-progress:not([changed]),
+livelike-text-prediction livelike-progress:not([changed]) {
+  visibility: hidden !important;
+}
+
+livelike-image-prediction livelike-percentage:not([changed]),
+livelike-text-prediction livelike-percentage:not([changed]) {
+  visibility: hidden !important;
+}
+
+
+
+
 livelike-widgets {
   display: flex;
   flex-direction: column-reverse;

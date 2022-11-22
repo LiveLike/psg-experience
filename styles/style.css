@@ -206,7 +206,7 @@ livelike-image-number-prediction livelike-option[image] {
 
 livelike-progress,
 livelike-percentage {
-  visibility: visible !important;
+  visibility: visible;
 }
 
 .leaderboard-entries-container {
