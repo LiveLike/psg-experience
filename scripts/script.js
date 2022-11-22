@@ -40,7 +40,7 @@ const addFooterToFollowUpPredictions = () => {
     }
 
     currentWidgetElement = livelikeWidgetsElement.querySelector(`[widgetid="${currentWidget.id}"]`);
-    currentWidgetElement.querySelector(".predict-button").innerHTML = "Valider";
+    //currentWidgetElement.querySelector(".predict-button").innerHTML = "Valider";
 
     const followUpWidget = widgets.find(widget => {
       if (widget.kind == "image-number-prediction-follow-up") {
@@ -76,16 +76,27 @@ const init = (clientId, programId, leaderboardId) => {
     LiveLike.applyLocalization({
       en: {
         "widget.quiz.voteButton.label": "Valider",
-        "widget.quiz.voteButton.label": "Valider",
         "widget.quiz.votedText": "Fait!",
         'widget.textAsk.placeholder': 'Écrivez ici...',
         'widget.textAsk.sendButton.label': 'ENVOYER',
+        "widget.textPrediction.voteButton.label": "Valider!",
+        "widget.textPrediction.votedText": "Fait!",
+        "widget.imagePrediction.voteButton.label": "Valider!",
+        "widget.imagePrediction.votedText": "Fait!",
+        "widget.numberPrediction.voteButton.label": "Valider!",
+        "widget.numberPrediction.votedText": "Fait!",
       },
       fr: {
         "widget.quiz.voteButton.label": "Valider",
         "widget.quiz.votedText": "Fait!",
         'widget.textAsk.placeholder': 'Écrivez ici...',
         'widget.textAsk.sendButton.label': 'ENVOYER',
+        "widget.textPrediction.voteButton.label": "Valider!",
+        "widget.textPrediction.votedText": "Fait!",
+        "widget.imagePrediction.voteButton.label": "Valider!",
+        "widget.imagePrediction.votedText": "Fait!",
+        "widget.numberPrediction.voteButton.label": "Valider!",
+        "widget.numberPrediction.votedText": "Fait!",
       }
     });
 
