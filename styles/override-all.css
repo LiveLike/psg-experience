@@ -155,3 +155,12 @@ livelike-image-prediction-follow-up livelike-option[selected][incorrect] {
   font-weight: 100 !important;
   color: #00fa64 !important;
 }
+
+/* voting container overrides */
+
+/* livelike-option[image]
+.livelike-voting-image-container,
+.livelike-voting-input-container
+{
+  background-color: #252f3e !important;
+} */
