@@ -10,7 +10,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-const handleWidgetsScrolling = (widgetsContainer) => {
+const handleWidgetsScrolling = () => {
+  const widgetsContainer = document.querySelector('livelike-widgets');
   const widgetsTabPane = document.querySelector('.widgets-tab.tab-pane')
   const handleClickLoadMoreButton = () => {
     const loadMoreButton = document.querySelector(".livelike-load-more-button");
@@ -22,8 +23,47 @@ const handleWidgetsScrolling = (widgetsContainer) => {
     widgetsTabPane.scrollTop = 0;
     handleClickLoadMoreButton();
   }
+
   widgetsContainer.addEventListener('widgetattached', scrollUp);
 }
+
+const addFooterToFollowUpPredictions = () => {
+  const livelikeWidgetsElement = document.querySelector("livelike-widgets");
+  const livelikeWidgetsCollection = livelikeWidgetsElement.children;
+  const widgets = Array.from(livelikeWidgetsCollection).map(x => x.__widgetPayload);
+
+  for (let index = 0; index < widgets.length; index++) {
+    const currentWidget = widgets[index];
+
+    if (!(currentWidget.kind == "image-number-prediction" || currentWidget.kind == "text-prediction" || currentWidget.kind == "image-prediction")) {
+      continue;
+    }
+
+    const followUpWidget = widgets.find(widget => {
+      if (widget.kind == "image-number-prediction-follow-up") {
+        return currentWidget.id == widget.image_number_prediction_id;
+      } else if (widget.kind == "text-prediction-follow-up") {
+        return currentWidget.id == widget.text_prediction_id;
+      } else if (widget.kind == "image-prediction-follow-up") {
+        return currentWidget.id == widget.image_prediction_id;
+      }
+    });
+
+    if (!followUpWidget) {
+      continue;
+    }
+
+    const followUpWidgetElement = livelikeWidgetsElement.querySelector(`[widgetid="${followUpWidget.id}"]`);
+    const footerElement = followUpWidgetElement.querySelector("livelike-footer")
+
+    if (footerElement) {
+      continue;
+    }
+
+    const body = followUpWidgetElement.querySelector('livelike-widget-body');
+    body.insertAdjacentHTML('afterend', `<livelike-footer>You won ${currentWidget.earnable_rewards[0].reward_item_amount} ${currentWidget.earnable_rewards[0].reward_item_name}</livelike-footer>`);
+  }
+};
 
 const init = (clientId, programId, leaderboardId) => {
   LiveLike.init({
@@ -50,40 +90,11 @@ const init = (clientId, programId, leaderboardId) => {
     refreshProfileData()
     const widgetsContainer = document.querySelector('livelike-widgets');
     widgetsContainer.programid = programId;
+    handleWidgetsScrolling();
 
-    handleWidgetsScrolling(widgetsContainer);
     widget.addEventListener('answer', handleResultAnimation);
-
-    document.addEventListener('widgetattached', ({ detail }) => {
-      const { element: currentWidgetElement, widget: currentWidget } = detail;
-
-      if (!(currentWidget.kind == "image-number-prediction" || currentWidget.kind == "text-prediction" || currentWidget.kind == "image-prediction")) {
-        return;
-      }
-
-      const livelikeWidgetsElement = document.querySelector("livelike-widgets");
-      const livelikeWidgets = livelikeWidgetsElement.children;
-      const widgetPayloads = Array.from(livelikeWidgets).map(x => x.__widgetPayload);
-
-      currentWidgetElement.updateComplete.then((x) => {
-
-        const followUpWidget = widgetPayloads.find(widget => {
-          if (widget.kind == "image-number-prediction-follow-up") {
-            return currentWidget.id == widget.image_number_prediction_id;
-          } else if (widget.kind == "text-prediction-follow-up") {
-            return currentWidget.id == widget.text_prediction_id;
-          } else if (widget.kind == "image-prediction-follow-up") {
-            return currentWidget.id == widget.image_prediction_id;
-          }
-        });
-
-        if (!followUpWidget) {
-          return;
-        }
-        const followUpWidgetElement = livelikeWidgetsElement.querySelector(`[widgetid="${followUpWidget.id}"]`);
-        const body = followUpWidgetElement.querySelector('livelike-widget-body');
-        body.insertAdjacentHTML('afterend', `<livelike-footer>You won ${currentWidget.earnable_rewards[0].reward_item_amount} ${currentWidget.earnable_rewards[0].reward_item_name}</livelike-footer>`);
-      })
+    widgetsContainer.addEventListener('widgetattached', e => {
+      e.detail.element.updateComplete.then(addFooterToFollowUpPredictions);
     });
   });
 };
